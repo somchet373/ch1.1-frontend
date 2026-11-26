@@ -34,6 +34,20 @@
         </q-list>
       </q-card-section>
     </q-card>
+
+    <q-card class="q-mt-md">
+      <q-card-section>
+        <div class="text-h6">Docker Quick Reference</div>
+        <q-list bordered separator class="q-mt-sm">
+          <q-item v-for="item in dockerCommands" :key="item.command">
+            <q-item-section>
+              <q-item-label><code>{{ item.command }}</code></q-item-label>
+              <q-item-label caption>{{ item.detail }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-card-section>
+    </q-card>
   </q-page>
 </template>
 
@@ -78,5 +92,13 @@ const dockerItems = [
     title: 'Network',
     detail: 'ให้บริการใน Docker ติดต่อกันได้ เช่น Nginx ส่งต่อคำขอไปยัง Express',
   },
+]
+
+const dockerCommands = [
+  { command: 'docker compose config', detail: 'ใช้ก่อนเริ่มระบบเพื่อตรวจว่า Docker Compose อ่านไฟล์ตั้งค่าได้ถูกต้อง' },
+  { command: 'docker compose up -d --build', detail: 'ใช้หลังแก้โค้ดหรือ Dockerfile เพื่อสร้างอิมเมจใหม่และเปิดบริการในเบื้องหลัง' },
+  { command: 'docker compose ps', detail: 'ใช้หลังเปิดระบบเพื่อดูว่าบริการใดกำลังทำงานและเปิดพอร์ตใดไว้' },
+  { command: 'docker compose logs -f', detail: 'ใช้เมื่อเว็บมีปัญหาเพื่อติดตามข้อความจากบริการต่าง ๆ ขณะทำงาน' },
+  { command: 'docker compose down', detail: 'ใช้เมื่อทดสอบเสร็จเพื่อหยุดและลบคอนเทนเนอร์กับเครือข่ายที่ Compose สร้างไว้' },
 ]
 </script>
